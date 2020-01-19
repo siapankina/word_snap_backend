@@ -1,3 +1,4 @@
 class Game < ApplicationRecord
-    belongs_to :user
+  has_many :players_games
+  has_many :players, through: :players_game
 end
