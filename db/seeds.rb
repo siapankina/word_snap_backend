@@ -33,9 +33,9 @@ game_a = Game.create()
 game_b = Game.create()
 
 # 2 x Participants in Game A
-participant_a_one = Participant.create(player_id: player_andy.id, game_id: game_a.id, score: 5)
-participant_a_two = Participant.create(player_id: player_harrison.id, game_id: game_a.id, score: 5)
+participant_a_one = PlayersGame.create(player_id: player_andy.id, game_id: game_a.id, score: 5)
+participant_a_two = PlayersGame.create(player_id: player_harrison.id, game_id: game_a.id, score: 5)
 
 # 2 x Participants in Game B
-participant_b_one = Participant.create(player_id: player_sergio.id, game_id: game_b.id, score: 5)
-participant_b_two = Participant.create(player_id: player_hiroshi.id, game_id: game_b.id, score: 5)
+participant_b_one = PlayersGame.create(player_id: player_sergio.id, game_id: game_b.id, score: 5)
+participant_b_two = PlayersGame.create(player_id: player_hiroshi.id, game_id: game_b.id, score: 5)
