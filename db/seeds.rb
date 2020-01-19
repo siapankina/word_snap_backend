@@ -5,21 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-player_one_a = Player.create(username: "Andy")
-player_one_b = Player.create(username: "Harrison")
-player_one_c = Player.create(username: "Sergio")
-player_one_d = Player.create(username: "Hiroshi")
-
-player_two_a = Player.create(username: "Fangfei")
-player_two_b = Player.create(username: "Horish")
-player_two_c = Player.create(username: "Anderson")
-player_two_d = Player.create(username: "Tish")
-
-game_a = Game.create(player_one_a.id, player_two_a.id )
-game_b = Game.create(player_one_b.id, player_two_b.id )
-game_c = Game.create(player_on_c.id, player_two_c.id )
-game_d = Game.create(player_one_d.id, player_two_d.id )
-
 language_a = Language.create(chinese: "Shuǐ 水", english: "Water")
 language_b = Language.create(chinese: "Dà 大", english: "Big")
 language_c = Language.create(chinese: "Shān 山", english: "Mountain")
@@ -37,19 +22,20 @@ language_n = Language.create(chinese: "Yǔ 雨", english: "Rain")
 language_o = Language.create(chinese: "Wáng 王", english: "King")
 language_p = Language.create(chinese: "Kǒu 口", english: "Mouth")
 
-# player
-# create_table "player_games", force: :cascade do |t|
-#   t.integer "player_id", null: false
-#   t.integer "game_id", null: false
-#   t.integer "score"
-#   t.datetime "created_at", precision: 6, null: false
-#   t.datetime "updated_at", precision: 6, null: false
-#   t.index ["game_id"], name: "index_player_games_on_game_id"
-#   t.index ["player_id"], name: "index_player_games_on_player_id"
-# end
+# 4 x Players
+player_andy = Player.create(username: "Andy")
+player_harrison = Player.create(username: "Harrison")
+player_sergio = Player.create(username: "Sergio")
+player_hiroshi = Player.create(username: "Hiroshi")
 
+# 2 x Games
+game_a = Game.create()
+game_b = Game.create()
 
-# create_table "players", force: :cascade do |t|
-#   t.string "username"
-#   t.datetime "created_at", precision: 6, null: false
-#   t.datetime "updated_at", p
+# 2 x Participants in Game A
+participant_a_one = Participant.create(player_id: player_andy.id, game_id: game_a.id, score: 5)
+participant_a_two = Participant.create(player_id: player_harrison.id, game_id: game_a.id, score: 5)
+
+# 2 x Participants in Game B
+participant_b_one = Participant.create(player_id: player_sergio.id, game_id: game_b.id, score: 5)
+participant_b_two = Participant.create(player_id: player_hiroshi.id, game_id: game_b.id, score: 5)
