@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2020_01_17_113311) do
     t.string "english"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["chinese"], name: "index_pairs_on_chinese", unique: true
+    t.index ["english"], name: "index_pairs_on_english", unique: true
   end
 
   create_table "player_games", force: :cascade do |t|
