@@ -3,6 +3,16 @@ class PlayersController < ApplicationController
     @player = Player.new
   end
 
+  def index
+    players = Player.all
+    render json: players, except: [:created_at, :updated_at], include: :games
+  end
+
+  def show
+    player = Player.find(params[:id])
+    render json: player, except: [:created_at, :updated_at], include: :games
+  end
+
   def create
     if Player.exists?(username: params[:username])
       player = Player.where(username: params[:username]).first
