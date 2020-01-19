@@ -17,11 +17,21 @@ ActiveRecord::Schema.define(version: 2020_01_17_113311) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "languages", force: :cascade do |t|
+  create_table "pairs", force: :cascade do |t|
     t.string "chinese"
     t.string "english"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "player_games", force: :cascade do |t|
+    t.integer "player_id", null: false
+    t.integer "game_id", null: false
+    t.integer "score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_player_games_on_game_id"
+    t.index ["player_id"], name: "index_player_games_on_player_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -30,16 +40,6 @@ ActiveRecord::Schema.define(version: 2020_01_17_113311) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "players_games", force: :cascade do |t|
-    t.integer "player_id", null: false
-    t.integer "game_id", null: false
-    t.integer "score"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["game_id"], name: "index_players_games_on_game_id"
-    t.index ["player_id"], name: "index_players_games_on_player_id"
-  end
-
-  add_foreign_key "players_games", "games"
-  add_foreign_key "players_games", "players"
+  add_foreign_key "player_games", "games"
+  add_foreign_key "player_games", "players"
 end

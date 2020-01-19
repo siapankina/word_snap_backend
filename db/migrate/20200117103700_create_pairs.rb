@@ -1,6 +1,6 @@
-class CreateLanguages < ActiveRecord::Migration[6.0]
+class CreatePairs < ActiveRecord::Migration[6.0]
   def change
-    create_table :languages do |t|
+    create_table :pairs do |t|
       t.string :chinese
       t.string :english
 
