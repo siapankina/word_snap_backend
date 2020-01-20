@@ -5,7 +5,14 @@ class ApplicationController < ActionController::API
     game = Game.create()
     game_player_1_info = PlayerGame.create(player_id: player_1.id, game_id: game.id, score: 0)
     game_player_2_info = PlayerGame.create(player_id: player_2.id, game_id: game.id, score: 0)
-    render :json => { :game_player_1_info => game_player_1_info.as_json(:except => [:created_at, :updated_at]), :game_player_2_info => game_player_2_info.as_json(:except => [:created_at, :updated_at]) }
+    render :json => {
+      :game_player_1_info => game_player_1_info.as_json(
+        include: :player
+      ),
+      :game_player_2_info => game_player_2_info.as_json(
+        include: :player
+      ),
+    }
   end
 
   def get_or_create_player(username)
